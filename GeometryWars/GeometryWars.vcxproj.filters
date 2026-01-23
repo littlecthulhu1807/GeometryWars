@@ -36,26 +36,27 @@
     <ClCompile Include="..\external\ImGUI-SFML\src\imgui-SFML.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine.cpp">
+    <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\external\SFML\bin\sfml-audio-d-3.dll" />
-    <None Include="..\external\SFML\bin\sfml-graphics-3.dll" />
-    <None Include="..\external\SFML\bin\sfml-graphics-d-3.dll" />
-    <None Include="..\external\SFML\bin\sfml-network-3.dll" />
-    <None Include="..\external\SFML\bin\sfml-network-d-3.dll" />
-    <None Include="..\external\SFML\bin\sfml-system-3.dll" />
-    <None Include="..\external\SFML\bin\sfml-system-d-3.dll" />
-    <None Include="..\external\SFML\bin\sfml-window-3.dll" />
-    <None Include="..\external\SFML\bin\sfml-window-d-3.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="..\external\SFML\bin\sfml-audio-3.dll" />
+    <CopyFileToFolders Include="..\external\SFML\bin\sfml-audio-d-3.dll" />
+    <CopyFileToFolders Include="..\external\SFML\bin\sfml-graphics-3.dll" />
+    <CopyFileToFolders Include="..\external\SFML\bin\sfml-graphics-d-3.dll" />
+    <CopyFileToFolders Include="..\external\SFML\bin\sfml-network-3.dll" />
+    <CopyFileToFolders Include="..\external\SFML\bin\sfml-network-d-3.dll" />
+    <CopyFileToFolders Include="..\external\SFML\bin\sfml-system-3.dll" />
+    <CopyFileToFolders Include="..\external\SFML\bin\sfml-system-d-3.dll" />
+    <CopyFileToFolders Include="..\external\SFML\bin\sfml-window-3.dll" />
+    <CopyFileToFolders Include="..\external\SFML\bin\sfml-window-d-3.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Engine.hpp">
+    <ClInclude Include="src\Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vec2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
