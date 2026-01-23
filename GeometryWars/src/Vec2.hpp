@@ -16,12 +16,14 @@ public:
 	};
 
 	//Conversion constructor
-	Vec2(const sf::Vector2<T>& vec):
+	Vec2(const sf::Vector2<T>& vec) :
 		x(vec.x),
-		y(vec.y){}
-	Vec2(const sf::Vector2i& vec):
-		x(vec.x),
-		y(vec.y){}
+		y(vec.y) {
+	};
+	//Vec2(const sf::Vector2i& vec) :
+	//	x(T(vec.x)),
+	//	y(T(vec.y)) {
+	//};
 
 	//Aditional function
 	void print() {
@@ -44,16 +46,16 @@ public:
 		y = y * f;
 		return *this;
 	}
-	Vec2 distance(Vec2& v) {
-		return Vec2(v.x - x, v.y - y);
+	Vec2 distance(Vec2& target) {
+		return Vec2(target.x - x, target.y - y);
 	}
 	float lenght() {
 		//TODO: calculate vector lenght
 		return std::sqrt(x * x + y * y);
 	}
-	Vec2 normalize() {
+	Vec2<float> normalize() {
 		//TODO: calculate normalized Vector
-		return Vec2((float)x / lenght(), (float)y / lenght());
+		return Vec2<float>((float)x / lenght(), (float)y / lenght());
 	}
 
 	//Math Operations

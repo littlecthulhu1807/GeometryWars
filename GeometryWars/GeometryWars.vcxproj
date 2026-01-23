@@ -181,6 +181,8 @@ ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="..\external\ImGUI\src\imgui_draw.cpp" />
     <ClCompile Include="..\external\ImGUI\src\imgui_tables.cpp" />
     <ClCompile Include="..\external\ImGUI\src\imgui_widgets.cpp" />
+    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
@@ -217,6 +219,8 @@ ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\EntityManager.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Vec2.hpp" />
   </ItemGroup>
