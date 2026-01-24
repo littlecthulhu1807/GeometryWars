@@ -1,5 +1,7 @@
 #pragma once
 
+#include"EntityManager.h"
+
 #include "imgui.h"
 #include "imgui-SFML.h"
 
@@ -10,7 +12,7 @@
 
 class Game {
 
-	int m_entityManager;
+	EntityManager m_entityManager;
 	sf::RenderWindow m_window;
 	sf::Clock m_deltaClock;
 	bool m_paused = false;

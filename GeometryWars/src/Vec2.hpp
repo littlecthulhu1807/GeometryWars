@@ -1,5 +1,8 @@
+#pragma once
+
 #include<iostream>
 #include<math.h>
+#include<SFML/Graphics.hpp>
 
 template<typename T>
 class Vec2 {
@@ -20,10 +23,10 @@ public:
 		x(vec.x),
 		y(vec.y) {
 	};
-	//Vec2(const sf::Vector2i& vec) :
-	//	x(T(vec.x)),
-	//	y(T(vec.y)) {
-	//};
+	Vec2(const sf::Vector2i& vec) :
+		x(T(vec.x)),
+		y(T(vec.y)) {
+	};
 
 	//Aditional function
 	void print() {

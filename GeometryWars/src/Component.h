@@ -1,8 +1,6 @@
 #pragma once
 
-#include"Component.h"
-
-class Component : public Component {
+class Component{
 public:
 	bool exists = false;
 };

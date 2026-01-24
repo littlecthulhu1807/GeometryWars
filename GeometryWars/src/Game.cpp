@@ -10,14 +10,18 @@ Game::~Game(){
 }
 
 void Game::gameInit(){
-    std::cout << "initGame\n";
-    m_window = sf::RenderWindow(sf::VideoMode({ 640, 480 }), "Geometry Wars!");
-    m_window.setFramerateLimit(60);
-    ImGui::SFML::Init(m_window);
+    m_entityManager.addEntity("player");
+    m_entityManager.addEntity("enemy");
+    m_entityManager.addEntity("enemy");
+
+    //m_window = sf::RenderWindow(sf::VideoMode({ 640, 480 }), "Geometry Wars!");
+    //m_window.setFramerateLimit(60);
+    //ImGui::SFML::Init(m_window);
 }
 
 void Game::run(){
-    std::cout << "runGame\n";
+    std::cin.get();
+    /*
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
@@ -54,4 +58,5 @@ void Game::run(){
     }
 
     ImGui::SFML::Shutdown();
+    */
 }

@@ -2,30 +2,32 @@
 
 #include"Entity.h"
 
+#include<memory> 
+#include<iostream>
 #include<string>
 #include<vector>
 #include<map>
 
-
+using EntityVec = std::vector<std::shared_ptr<Entity>>;
+using EntityMap = std::map<std::string, EntityVec>;
 
 class EntityManager{
 
-	std::vector<Entity> m_EntityVec; //std::Vector of Enteties
-	std::map<Entity, std::string> m_entityMap; //std::map of entities with tags
-	std::vector<Entity> m_toAdd; //Std::Vector of entities to add for next frame
-	bool m_toRemove; //Std::Vector of entities to remove for next frame
-	int m_totalEntities; //int counting up and used as an ID for entities
+	EntityVec m_EntityVec; //std::Vector of Enteties
+	EntityMap m_entityMap; //std::map of entities with tags
+	EntityVec m_toAdd; //Std::Vector of entities to add for next frame
+	EntityVec m_toRemove; //Std::Vector of entities to remove for next frame
+	unsigned int m_totalEntities = 0; //int counting up and used as an ID for entities
 
 
 public:
 	EntityManager();
-	~EntityManager();
 
 	void init();
 	void update();
-	void addEntity();
-	void deletEntity();
-	void getEntities();
-	void getEntities(std::string tag);
+	std::shared_ptr<Entity> addEntity(const std::string& tag);
+	void deletEntity(EntityVec&);
+	EntityVec& getEntities();
+	EntityVec& getEntities(std::string tag);
 
 };
