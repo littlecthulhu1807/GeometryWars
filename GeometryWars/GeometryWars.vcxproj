@@ -219,6 +219,13 @@ ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\CCollision.h" />
+    <ClInclude Include="src\CInput.h" />
+    <ClInclude Include="src\CLifespan.h" />
+    <ClInclude Include="src\Component.h" />
+    <ClInclude Include="src\CScore.h" />
+    <ClInclude Include="src\CShape.h" />
+    <ClInclude Include="src\CTransform.h" />
     <ClInclude Include="src\Entity.h" />
     <ClInclude Include="src\EntityManager.h" />
     <ClInclude Include="src\Game.h" />
