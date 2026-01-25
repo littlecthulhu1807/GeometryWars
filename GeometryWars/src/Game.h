@@ -1,14 +1,12 @@
 #pragma once
 
 #include"EntityManager.h"
+#include"SRender.h"
 
 #include "imgui.h"
 #include "imgui-SFML.h"
 
-#include <SFML/Graphics/CircleShape.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/System/Clock.hpp>
-#include <SFML/Window/Event.hpp>
+#include <SFML/Graphics.hpp>
 
 class Game {
 
@@ -16,6 +14,7 @@ class Game {
 	sf::RenderWindow m_window;
 	sf::Clock m_deltaClock;
 	bool m_paused = false;
+	SRender m_sRender;
 
 public:
 

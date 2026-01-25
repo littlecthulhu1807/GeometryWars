@@ -1,9 +1,17 @@
 #include"EntityManager.h"
 
-#include<memory>
+//#include<memory>
 
 EntityManager::EntityManager(){
 	std::cout << "Created Entity Manager\n";
+}
+
+EntityManager::~EntityManager() {
+	std::cout << "Deleted Entity Manager\n";
+	m_EntityVec.clear();
+	m_entityMap.clear();
+	m_toAdd.clear();
+	m_toRemove.clear();
 }
 
 void EntityManager::init(){
@@ -28,13 +36,14 @@ std::shared_ptr<Entity> EntityManager::addEntity(const std::string& tag){
 	return ptr;
 }
 
-void EntityManager::deletEntity(EntityVec&){
+void EntityManager::deletEntity(EntityVec& entity){
+	
 }
 
-//EntityVec& EntityManager::getEntities(){
-//	// TODO: insert return statement here
-//}
+EntityVec& EntityManager::getEntities(){
+	return m_EntityVec;
+}
 
-//EntityVec& EntityManager::getEntities(std::string tag){
-//	// TODO: insert return statement here
-//}
+EntityVec& EntityManager::getEntities(std::string tag){
+	return m_entityMap[tag];
+}

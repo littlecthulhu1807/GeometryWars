@@ -1,6 +1,12 @@
 #include<iostream>
 
+#include<SFML/Graphics.hpp>
+
 #include"Game.h"
+#include"Component.h"
+#include"CShape.h"
+#include"CTransform.h"
+#include"Vec2.hpp"
 
 Game::Game(){
     gameInit();
@@ -10,22 +16,20 @@ Game::~Game(){
 }
 
 void Game::gameInit(){
-    m_entityManager.addEntity("player");
+    m_entityManager.addEntity("player")->add<Component, CShape, CTransform>(CShape(), CTransform());
+        //->add<Component>();
+    //add<Component, CShape, CTransform>(CShape(50.0f, 8, sf::Color::Red), CTransform({300, 300}, {0, 0}));
     m_entityManager.addEntity("enemy");
     m_entityManager.addEntity("enemy");
 
-    //m_window = sf::RenderWindow(sf::VideoMode({ 640, 480 }), "Geometry Wars!");
-    //m_window.setFramerateLimit(60);
-    //ImGui::SFML::Init(m_window);
+    m_window = sf::RenderWindow(sf::VideoMode({ 640, 480 }), "Geometry Wars!");
+    m_window.setFramerateLimit(60);
+    ImGui::SFML::Init(m_window);
+
+    m_sRender.sRenderInit();
 }
 
 void Game::run(){
-    std::cin.get();
-    /*
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
-
 
     while (m_window.isOpen()) {
         //Poll Events/ Input System
@@ -34,6 +38,11 @@ void Game::run(){
 
             if (event->is<sf::Event::Closed>()) {
                 m_window.close();
+            }
+            else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
+                if (keyPressed->scancode == sf::Keyboard::Scancode::Escape) {
+                    m_window.close();
+                }
             }
         }
 
@@ -50,7 +59,13 @@ void Game::run(){
 
         //Render
         m_window.clear();
-        m_window.draw(shape);
+        //Iterate through Enteties and draw all enteties with Shape Component
+        //for (auto& e : m_entityManager.getEntities()) {
+        //    if (e->get<CShape>().exists) {
+        //        std::cout << "draw\n";
+        //        m_window.draw(e->get<CShape>().m_shape);
+        //    }
+        //}
         ImGui::SFML::Render(m_window);
         m_window.display();
 
@@ -58,5 +73,6 @@ void Game::run(){
     }
 
     ImGui::SFML::Shutdown();
-    */
+    std::cin.get();
+    
 }

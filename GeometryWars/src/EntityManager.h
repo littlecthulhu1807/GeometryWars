@@ -22,11 +22,12 @@ class EntityManager{
 
 public:
 	EntityManager();
+	~EntityManager();
 
 	void init();
 	void update();
 	std::shared_ptr<Entity> addEntity(const std::string& tag);
-	void deletEntity(EntityVec&);
+	void deletEntity(EntityVec& entity);
 	EntityVec& getEntities();
 	EntityVec& getEntities(std::string tag);
 

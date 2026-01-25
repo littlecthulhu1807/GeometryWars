@@ -188,6 +188,7 @@ ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\SRender.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\external\SFML\bin\sfml-audio-3.dll">
@@ -232,6 +233,7 @@ ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="src\Entity.h" />
     <ClInclude Include="src\EntityManager.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\SRender.h" />
     <ClInclude Include="src\Vec2.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

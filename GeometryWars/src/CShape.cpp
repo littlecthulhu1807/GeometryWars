@@ -2,7 +2,7 @@
 
 CShape::CShape(){}
 
-CShape::CShape(float radius, int verts, sf::Color color):
+CShape::CShape(float radius, int verts, sf::Color color) :
 	m_radius(radius),
 	m_verts(verts),
 	m_color(color){

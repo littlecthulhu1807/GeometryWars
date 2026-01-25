@@ -54,6 +54,9 @@
     <ClCompile Include="src\CShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\SRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\external\SFML\bin\sfml-audio-3.dll" />
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SRender.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

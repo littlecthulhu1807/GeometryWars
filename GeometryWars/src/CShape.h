@@ -9,10 +9,10 @@ public:
 	CShape();
 	CShape(float radius, int verts, sf::Color color);
 
-	sf::CircleShape m_shape;
-	float m_radius;
-	int m_verts;
-	sf::Color m_color;
+	sf::CircleShape m_shape{};
+	float m_radius{};
+	int m_verts{};
+	sf::Color m_color{};
 
 private:
 };
