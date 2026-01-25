@@ -15,6 +15,7 @@ class Game {
 	sf::Clock m_deltaClock;
 	bool m_paused = false;
 	SRender m_sRender;
+	std::shared_ptr<Entity> m_player;
 
 public:
 
@@ -25,4 +26,5 @@ public:
 
 	void gameInit();
 	void run();
+	std::shared_ptr<Entity> getPlayer();
 };

@@ -50,7 +50,7 @@ public:
 
 template<typename T, typename... TArgs>
 void Entity::add(TArgs&&... mArgs) {
-	auto& component = Entity::get<T>(m_components);
+	auto& component = get<T>();
 	component = T(std::forward<TArgs>(mArgs)...);
 	component.exists = true;
 }
