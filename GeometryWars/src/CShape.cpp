@@ -12,3 +12,8 @@ CShape::CShape(float radius, int verts, sf::Color color) :
 	m_shape.setFillColor(m_color);
 	m_shape.setOrigin(m_shape.getGeometricCenter());
 }
+
+sf::CircleShape& CShape::getShape()
+{
+	return m_shape;
+}

@@ -4,19 +4,26 @@
 #include "imgui.h"
 #include "imgui-SFML.h"
 
+#include"EntityManager.h"
+
 
 class SRender {
 
-	bool rendering = true;
+	bool m_rendering = true;
 	sf::RenderWindow m_window;
 
 public:
 	SRender();
 
 	void sRenderInit();
-	void drawCalls();
+	void drawCalls(EntityManager& entityM);
 
 	void setRendering(bool rendering);
+	bool getRendering();
+
+	sf::RenderWindow& getWindow(){
+		return m_window;
+	}
 
 
 };

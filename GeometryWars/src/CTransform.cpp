@@ -30,4 +30,24 @@ void CTransform::setAngle(float angle){
 	m_angle = angle;
 }
 
+Vec2<float>& CTransform::getPos()
+{
+	return m_pos;
+}
+
+float CTransform::getAngle()
+{
+	return m_angle;
+}
+
+Vec2<float>& CTransform::getVel()
+{
+	return m_velocity;
+}
+
+Vec2<float>& CTransform::getScaler()
+{
+	return m_scale;
+}
+
 

@@ -2,6 +2,7 @@
 
 #include"EntityManager.h"
 #include"SRender.h"
+#include"SPhysics.h"
 
 #include "imgui.h"
 #include "imgui-SFML.h"
@@ -11,10 +12,11 @@
 class Game {
 
 	EntityManager m_entityManager;
-	sf::RenderWindow m_window;
 	sf::Clock m_deltaClock;
 	bool m_paused = false;
 	SRender m_sRender;
+	SPhysics m_sPhysics;
+
 	std::shared_ptr<Entity> m_player;
 
 public:
