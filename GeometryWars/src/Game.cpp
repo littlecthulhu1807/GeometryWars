@@ -13,15 +13,15 @@ Game::~Game(){
 }
 
 void Game::gameInit(){
+
     m_sRender = SRender();
+    m_sRender.sRenderInit(m_width, m_height);
     m_sPhysics = SPhysics();
 
 
     m_player = m_entityManager.addEntity("player");
     m_player->add<CShape>(50.0f, 10, sf::Color::Red);
     m_player->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(1.0f, 1.0f));
-    m_entityManager.addEntity("enemy");
-    m_entityManager.addEntity("enemy");
 }
 
 void Game::run(){
@@ -61,7 +61,7 @@ void Game::run(){
         //Collision
 
         //Move
-        m_sPhysics.updateMovement(m_entityManager, 1280, 960);
+        m_sPhysics.updateMovement(m_entityManager, m_width, m_height);
 
         //Imgui Updates
         //ImGui::SFML::Update(m_window, m_deltaClock.restart());

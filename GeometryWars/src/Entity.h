@@ -36,7 +36,7 @@ public:
 	friend class EntityManager;
 
 	template<typename T, typename... TArgs>
-	void add(TArgs&&... args);
+	Entity& add(TArgs&&... args);
 	template<typename T>
 	T& get();
 
@@ -49,10 +49,11 @@ public:
 };
 
 template<typename T, typename... TArgs>
-void Entity::add(TArgs&&... mArgs) {
+Entity& Entity::add(TArgs&&... mArgs) {
 	auto& component = get<T>();
 	component = T(std::forward<TArgs>(mArgs)...);
 	component.exists = true;
+	return *this;
 }
 
 template<typename T>

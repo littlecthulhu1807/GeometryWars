@@ -15,7 +15,7 @@ class SRender {
 public:
 	SRender();
 
-	void sRenderInit();
+	void sRenderInit(unsigned int width, unsigned int height);
 	void drawCalls(EntityManager& entityM);
 
 	void setRendering(bool rendering);

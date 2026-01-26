@@ -1,11 +1,10 @@
 #include"SRender.h"
 
 SRender::SRender(){
-    sRenderInit();
 }
 
-void SRender::sRenderInit(){
-    m_window = sf::RenderWindow(sf::VideoMode({ 1280, 960 }), "Geometry Wars!");
+void SRender::sRenderInit(unsigned int width, unsigned int height){
+    m_window = sf::RenderWindow(sf::VideoMode({ width, height }), "Geometry Wars!");
     m_window.setFramerateLimit(60);
     ImGui::SFML::Init(m_window);
 }
