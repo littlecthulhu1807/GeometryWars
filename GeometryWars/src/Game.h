@@ -3,11 +3,15 @@
 #include"EntityManager.h"
 #include"SRender.h"
 #include"SPhysics.h"
+#include"SInput.h"
+#include"Vec2.hpp"
 
 #include "imgui.h"
 #include "imgui-SFML.h"
 
 #include <SFML/Graphics.hpp>
+
+#include<iostream>
 
 class Game {
 
@@ -19,10 +23,13 @@ class Game {
 	bool m_paused = false;
 	SRender m_sRender;
 	SPhysics m_sPhysics;
+	SInput m_sInput;
 
 	std::shared_ptr<Entity> m_player;
 
 	void pollEvents();
+	void imGuiInit();
+	void imGuiUpdate();
 
 public:
 

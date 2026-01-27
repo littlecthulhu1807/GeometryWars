@@ -31,4 +31,7 @@ public:
 	EntityVec& getEntities();
 	EntityVec& getEntities(std::string tag);
 
+	void spawnEnemy();
+	void spawnBullet();
+
 };

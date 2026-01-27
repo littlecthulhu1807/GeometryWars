@@ -193,6 +193,7 @@ ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\SCollision.cpp" />
+    <ClCompile Include="src\SInput.cpp" />
     <ClCompile Include="src\SPhysics.cpp" />
     <ClCompile Include="src\SRender.cpp" />
   </ItemGroup>
@@ -240,6 +241,7 @@ ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="src\EntityManager.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\SCollision.h" />
+    <ClInclude Include="src\SInput.h" />
     <ClInclude Include="src\SPhysics.h" />
     <ClInclude Include="src\SRender.h" />
     <ClInclude Include="src\Vec2.hpp" />

@@ -47,3 +47,9 @@ EntityVec& EntityManager::getEntities(){
 EntityVec& EntityManager::getEntities(std::string tag){
 	return m_entityMap[tag];
 }
+
+void EntityManager::spawnEnemy(){
+}
+
+void EntityManager::spawnBullet(){
+}

@@ -17,6 +17,7 @@ public:
 
 	void sRenderInit(unsigned int width, unsigned int height);
 	void drawCalls(EntityManager& entityM);
+	void drawDisplay();
 
 	void setRendering(bool rendering);
 	bool getRendering();
