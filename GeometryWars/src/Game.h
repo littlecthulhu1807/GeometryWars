@@ -22,6 +22,8 @@ class Game {
 
 	std::shared_ptr<Entity> m_player;
 
+	void pollEvents();
+
 public:
 
 

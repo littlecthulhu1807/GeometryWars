@@ -21,42 +21,48 @@ void Game::gameInit(){
 
     m_player = m_entityManager.addEntity("player");
     m_player->add<CShape>(50.0f, 10, sf::Color::Red);
-    m_player->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(1.0f, 1.0f));
+    m_player->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(0, 0));
+    //m_player->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(1.0f, 1.0f));
+}
+
+void Game::pollEvents()
+{
+    while (const auto event = m_sRender.getWindow().pollEvent()) {
+        ImGui::SFML::ProcessEvent(m_sRender.getWindow(), *event);
+
+        if (event->is<sf::Event::Closed>()) {
+            m_sRender.getWindow().close();
+        }
+        else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
+            //std::cout << keyPressed->code() << '\n';
+            if (keyPressed->scancode == sf::Keyboard::Scancode::Escape) {
+                m_sRender.getWindow().close();
+            }
+            if (keyPressed->scancode == sf::Keyboard::Scancode::R) {
+                if (m_sRender.getRendering()) {
+                    m_sRender.setRendering(false);
+                }
+                else {
+                    m_sRender.setRendering(true);
+                }
+            }
+            if (keyPressed->scancode == sf::Keyboard::Scancode::M) {
+                if (m_sPhysics.getPhysicsCalc()) {
+                    m_sPhysics.setPhysicsCalc(false);
+                }
+                else {
+                    m_sPhysics.setPhysicsCalc(true);
+                }
+            }
+        }
+    }
 }
 
 void Game::run(){
 
     while (m_sRender.getWindow().isOpen()) {
         //Poll Events/ Input System
-        while (const auto event = m_sRender.getWindow().pollEvent()) {
-            ImGui::SFML::ProcessEvent(m_sRender.getWindow(), *event);
-
-            if (event->is<sf::Event::Closed>()) {
-                m_sRender.getWindow().close();
-            }
-            else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
-                //std::cout << keyPressed->code() << '\n';
-                if (keyPressed->scancode == sf::Keyboard::Scancode::Escape) {
-                    m_sRender.getWindow().close();
-                }
-                if (keyPressed->scancode == sf::Keyboard::Scancode::R) {
-                    if (m_sRender.getRendering()){
-                        m_sRender.setRendering(false);
-                    } 
-                    else {
-                        m_sRender.setRendering(true);
-                    }
-                }
-                if (keyPressed->scancode == sf::Keyboard::Scancode::M) {
-                    if (m_sPhysics.getPhysicsCalc()) {
-                        m_sPhysics.setPhysicsCalc(false);
-                    }
-                    else {
-                        m_sPhysics.setPhysicsCalc(true);
-                    }
-                }
-            }
-        }
+        pollEvents();
 
         //Collision
 

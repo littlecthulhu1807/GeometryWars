@@ -5,7 +5,6 @@
 class CLifespan : public Component {
 public:
 	CLifespan();
-	~CLifespan();
 
 private:
 

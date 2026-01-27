@@ -5,7 +5,6 @@
 class CInput : public Component {
 public:
 	CInput();
-	~CInput();
 
 private:
 

@@ -6,8 +6,7 @@
 class CCollision : public Component {
 public:
 	CCollision();
-	~CCollision();
 
 private:
-	float radius;
+	float radius{};
 };

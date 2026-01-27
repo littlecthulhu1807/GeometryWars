@@ -181,7 +181,11 @@ ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="..\external\ImGUI\src\imgui_draw.cpp" />
     <ClCompile Include="..\external\ImGUI\src\imgui_tables.cpp" />
     <ClCompile Include="..\external\ImGUI\src\imgui_widgets.cpp" />
+    <ClCompile Include="src\CCollision.cpp" />
+    <ClCompile Include="src\CInput.cpp" />
+    <ClCompile Include="src\CLifespan.cpp" />
     <ClCompile Include="src\Component.cpp" />
+    <ClCompile Include="src\CScore.cpp" />
     <ClCompile Include="src\CShape.cpp" />
     <ClCompile Include="src\CTransform.cpp" />
     <ClCompile Include="src\Entity.cpp" />
