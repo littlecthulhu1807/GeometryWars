@@ -24,7 +24,7 @@ void SPhysics::updatePlayer(EntityManager& entityM){
 
             shape.getShape().setPosition({ trans.getPos().x , trans.getPos().y });
             trans.setPos({ shape.getShape().getPosition() });
-            shape.getShape().setRotation(shape.getShape().getRotation() + sf::degrees(5.0f));
+            shape.getShape().setRotation(shape.getShape().getRotation() + sf::degrees(2.0f));
         }
     }
 }
@@ -37,6 +37,7 @@ void SPhysics::updateEntityType(EntityManager& entityM, std::string entityKey, i
 
             shape.getShape().setPosition({ trans.getPos().x + trans.getVel(), trans.getPos().y + trans.getVel() });
             trans.setPos({ shape.getShape().getPosition() });
+            shape.getShape().setRotation(shape.getShape().getRotation() + sf::degrees(2.0f));
 
             if (shape.getShape().getPosition().x >= width || shape.getShape().getPosition().x <= 0) {
                 std::cout << "width bound hit!\n";

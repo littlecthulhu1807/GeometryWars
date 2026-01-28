@@ -47,16 +47,26 @@ void Game::imGuiInit(){
 void Game::imGuiUpdate(){
     //std::cout << "Hello\n";
     ImGui::SFML::Update(m_sRender.getWindow(), m_deltaClock.restart());
-    ImGui::Begin("Hello, world!");
-    if (ImGui::BeginTabBar("Bar 01")) {
-        if (ImGui::BeginTabItem("Boom")) {
+    ImGui::Begin("Geometry Wars Control Board");
+    if (ImGui::BeginTabBar("TabBar")) {
+        if (ImGui::BeginTabItem("Systems")) {
             //execute Tab Content
             ImGui::Text("Some Text");
+            ImGui::Checkbox("Movement", &m_sPhysics.m_physicsCalc);
+            //ImGui::Checkbox("Lifespan", &m_sPhysics.m_physicsCalc);
+            //ImGui::Checkbox("Collision", &m_sPhysics.m_physicsCalc);
+            //ImGui::Checkbox("Spawning", &m_sPhysics.m_physicsCalc);
             ImGui::EndTabItem();
         }
-        if (ImGui::BeginTabItem("Zoom")) {
+        if (ImGui::BeginTabItem("Entity")) {
             //execute Tab Content
             ImGui::Text("Some Text2");
+            if (ImGui::CollapsingHeader("Entity by Tag")) {
+                ImGui::Text("Some Text3");
+            }
+            if (ImGui::CollapsingHeader("All Entities")) {
+                ImGui::Text("Some Text4");
+            }
             ImGui::EndTabItem();
         }
     }

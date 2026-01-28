@@ -5,9 +5,10 @@
 
 class SPhysics {
 
-	bool m_physicsCalc = true;
+	
 
 public:
+	bool m_physicsCalc = true;
 	void updateMovement(EntityManager& entityM, int width, int height);
 
 	void setPhysicsCalc(bool setP);
