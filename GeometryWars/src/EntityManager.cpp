@@ -49,7 +49,24 @@ EntityVec& EntityManager::getEntities(std::string tag){
 }
 
 void EntityManager::spawnEnemy(){
+	/*
+	std::shared_ptr<Entity> tempEntity = addEntity("enemy");
+	tempEntity->add<CTransform>();
+	tempEntity->add<CCollision>();
+	tempEntity->add<CScore>();
+	tempEntity->add<CShape>();
+	tempEntity->add<CLifespan>();
+	*/
+
 }
 
 void EntityManager::spawnBullet(){
+	/*
+	std::shared_ptr<Entity> tempEntity = addEntity("bullet");
+	tempEntity->add<CTransform>();
+	tempEntity->add<CCollision>();
+	tempEntity->add<CScore>();
+	tempEntity->add<CShape>();
+	tempEntity->add<CLifespan>();
+	*/
 }

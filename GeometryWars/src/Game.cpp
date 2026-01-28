@@ -17,7 +17,7 @@ void Game::gameInit(){
 
     m_player = m_entityManager.addEntity("player");
     m_player->add<CShape>(50.0f, 10, sf::Color::Red);
-    m_player->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(0, 0));
+    m_player->add<CTransform>(Vec2<float>(300.0f, 400.0f), 50.0f);
     m_player->add<CInput>();
     //m_player->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(1.0f, 1.0f));
 }
@@ -31,8 +31,8 @@ void Game::pollEvents()
             m_sRender.getWindow().close();
         }
         else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
-            //std::cout << keyPressed->code() << '\n';
-            m_sInput.matchKeyInput(keyPressed->scancode, m_sRender, m_sPhysics);
+            //std::cout << (int)keyPressed->scancode << '\n';
+            m_sInput.matchKeyInput(keyPressed->scancode, m_sRender, m_sPhysics, m_entityManager);
         }
         else if (const auto* mouseEvent = event->getIf<sf::Event::MouseButtonPressed>()) {
             m_sInput.matchMouseInput(mouseEvent->button);

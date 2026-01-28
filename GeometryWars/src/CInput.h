@@ -7,5 +7,4 @@ public:
 	CInput();
 
 private:
-
 };

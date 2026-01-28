@@ -1,6 +1,7 @@
 #pragma once
 
 #include"EntityManager.h"
+#include<SFML/Graphics.hpp>
 
 class SPhysics {
 
@@ -11,4 +12,7 @@ public:
 
 	void setPhysicsCalc(bool setP);
 	bool getPhysicsCalc();
+
+	void updatePlayer(EntityManager& entityM);
+	void updateEntityType(EntityManager& entityM, std::string entityKey, int width, int height);
 };
