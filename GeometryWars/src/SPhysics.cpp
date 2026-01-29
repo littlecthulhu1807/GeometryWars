@@ -3,8 +3,7 @@
 void SPhysics::updateMovement(EntityManager& entityM, int width, int height){
     if (m_physicsCalc) {
         updatePlayer(entityM);
-        updateEntityType(entityM, "bullet", width, height);
-        updateEntityType(entityM, "enemy", width, height);
+        updateEnemyType(entityM, width, height);
     }
 }
 
@@ -29,7 +28,7 @@ void SPhysics::updatePlayer(EntityManager& entityM){
     }
 }
 
-void SPhysics::updateEntityType(EntityManager& entityM, std::string entityKey, int width, int height){
+void SPhysics::updateEnemyType(EntityManager& entityM, int width, int height){
     for (auto& e : entityM.getEntities("enemy")) {
         if (e->get<CTransform>().exists) {
             auto& trans = e->get<CTransform>();

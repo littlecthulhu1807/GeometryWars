@@ -13,7 +13,6 @@ void SRender::drawCalls(EntityManager& entityM){
         m_window.clear();
         for (auto& e : entityM.getEntities()) {
             if (e->get<CShape>().exists) {
-                //std::cout << e->tag().c_str() <<'\n';
                 m_window.draw(e->get<CShape>().getShape());
             }
         }

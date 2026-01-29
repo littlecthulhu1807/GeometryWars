@@ -15,11 +15,8 @@ void Game::gameInit(){
 
     imGuiInit();
 
-    m_player = m_entityManager.addEntity("player");
-    m_player->add<CShape>(50.0f, 10, sf::Color::Red);
-    m_player->add<CTransform>(Vec2<float>(300.0f, 400.0f), 50.0f);
-    m_player->add<CInput>();
-    //m_player->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(1.0f, 1.0f));
+    m_player = m_entityManager.spawnPlayer();
+    m_entityManager.spawnEnemy();
 }
 
 void Game::pollEvents()

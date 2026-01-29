@@ -49,14 +49,14 @@ EntityVec& EntityManager::getEntities(std::string tag){
 }
 
 void EntityManager::spawnEnemy(){
-	/*
+	
 	std::shared_ptr<Entity> tempEntity = addEntity("enemy");
-	tempEntity->add<CTransform>();
-	tempEntity->add<CCollision>();
-	tempEntity->add<CScore>();
-	tempEntity->add<CShape>();
-	tempEntity->add<CLifespan>();
-	*/
+	tempEntity->add<CTransform>(Vec2<float>(200.0f, 200.0f), 10.0f);
+	//tempEntity->add<CCollision>();
+	//tempEntity->add<CScore>();
+	tempEntity->add<CShape>(50.0f, 5, sf::Color::Blue);
+	//tempEntity->add<CLifespan>();
+	
 
 }
 
@@ -69,4 +69,12 @@ void EntityManager::spawnBullet(){
 	tempEntity->add<CShape>();
 	tempEntity->add<CLifespan>();
 	*/
+}
+
+std::shared_ptr<Entity> EntityManager::spawnPlayer(){
+	std::shared_ptr<Entity> tempEntity = addEntity("player");
+	tempEntity->add<CShape>(50.0f, 10, sf::Color::Red);
+	tempEntity->add<CTransform>(Vec2<float>(300.0f, 400.0f), 50.0f);
+	tempEntity->add<CInput>();
+	return tempEntity;
 }

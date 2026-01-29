@@ -7,6 +7,7 @@
 #include<string>
 #include<vector>
 #include<map>
+#include<random>
 
 using EntityVec = std::vector<std::shared_ptr<Entity>>;
 using EntityMap = std::map<std::string, EntityVec>;
@@ -33,5 +34,6 @@ public:
 
 	void spawnEnemy();
 	void spawnBullet();
+	std::shared_ptr<Entity> spawnPlayer();
 
 };

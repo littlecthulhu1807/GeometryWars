@@ -15,5 +15,5 @@ public:
 	bool getPhysicsCalc();
 
 	void updatePlayer(EntityManager& entityM);
-	void updateEntityType(EntityManager& entityM, std::string entityKey, int width, int height);
+	void updateEnemyType(EntityManager& entityM, int width, int height);
 };
