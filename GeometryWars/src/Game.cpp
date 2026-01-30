@@ -31,6 +31,10 @@ void Game::pollEvents()
             //std::cout << (int)keyPressed->scancode << '\n';
             m_sInput.matchKeyInput(keyPressed->scancode, m_sRender, m_sPhysics, m_entityManager);
         }
+        else if (const auto* keyPressed = event->getIf<sf::Event::KeyReleased>()) {
+            //std::cout << (int)keyPressed->scancode << '\n';
+            m_sInput.matchKeyRelease(keyPressed->scancode, m_entityManager);
+        }
         else if (const auto* mouseEvent = event->getIf<sf::Event::MouseButtonPressed>()) {
             m_sInput.matchMouseInput(mouseEvent->button);
         }
@@ -49,7 +53,7 @@ void Game::imGuiUpdate(){
         if (ImGui::BeginTabItem("Systems")) {
             //execute Tab Content
             ImGui::Text("Some Text");
-            ImGui::Checkbox("Movement", &m_sPhysics.m_physicsCalc);
+            ImGui::Checkbox("Movement", &m_sPhysics.physicsCalc);
             //ImGui::Checkbox("Lifespan", &m_sPhysics.m_physicsCalc);
             //ImGui::Checkbox("Collision", &m_sPhysics.m_physicsCalc);
             //ImGui::Checkbox("Spawning", &m_sPhysics.m_physicsCalc);

@@ -5,6 +5,7 @@ SInput::SInput(){
 
 void SInput::matchKeyInput(sf::Keyboard::Scancode keypress, SRender& renderer, SPhysics& physics, EntityManager& entityManager){
 	switch (keypress) {
+		//GeneralInputs ->
 	case sf::Keyboard::Scancode::Escape:
 		renderer.getWindow().close();
 		break;
@@ -17,51 +18,68 @@ void SInput::matchKeyInput(sf::Keyboard::Scancode keypress, SRender& renderer, S
 		}
 		break;
 	case sf::Keyboard::Scancode::M:
-		if (physics.getPhysicsCalc()) {
-			physics.setPhysicsCalc(false);
+		if (physics.physicsCalc) {
+			physics.physicsCalc = false;
 		}
 		else {
-			physics.setPhysicsCalc(true);
+			physics.physicsCalc = true;
 		}
 		break;
-		
+		//MovementInputs ->
 	case sf::Keyboard::Scancode::W:
 		for (auto e : entityManager.getEntities("player")) {
-			if (e->get<CInput>().exists) {
-				CTransform& tempTrans = e->get<CTransform>();
-
-				tempTrans.setPos({ tempTrans.getPos().x,  tempTrans.getPos().y - tempTrans.getVel() });
-			}
+			std::cout << "key down\n";
+			e->get<CInput>().up = true;
 		}
 		break;
 	case sf::Keyboard::Scancode::A:
 		for (auto e : entityManager.getEntities("player")) {
-			if (e->get<CInput>().exists) {
-				CTransform& tempTrans = e->get<CTransform>();
-
-				tempTrans.setPos({ tempTrans.getPos().x - tempTrans.getVel(),  tempTrans.getPos().y });
-			}
+			std::cout << "key down\n";
+			e->get<CInput>().left = true;
 		}
 		break;
 	case sf::Keyboard::Scancode::S:
 		for (auto e : entityManager.getEntities("player")) {
-			if (e->get<CInput>().exists) {
-				CTransform& tempTrans = e->get<CTransform>();
-
-				tempTrans.setPos({ tempTrans.getPos().x,  tempTrans.getPos().y + tempTrans.getVel() });
-			}
+			std::cout << "key down\n";
+			e->get<CInput>().down = true;
 		}
 		break;
 	case sf::Keyboard::Scancode::D:
 		for (auto e : entityManager.getEntities("player")) {
-			if (e->get<CInput>().exists) {
-				CTransform& tempTrans = e->get<CTransform>();
-
-				tempTrans.setPos({ tempTrans.getPos().x + tempTrans.getVel(),  tempTrans.getPos().y });
-			}
+			std::cout << "key down\n";
+			e->get<CInput>().right = true;
 		}
 		break;
 		
+	}
+}
+
+void SInput::matchKeyRelease(sf::Keyboard::Scancode keyprelease, EntityManager& entityManager){
+	switch (keyprelease) {
+	case sf::Keyboard::Scancode::W:
+		for (auto e : entityManager.getEntities("player")) {
+			std::cout << "key up\n";
+			e->get<CInput>().up = false;
+		}
+		break;
+	case sf::Keyboard::Scancode::A:
+		for (auto e : entityManager.getEntities("player")) {
+			std::cout << "key up\n";
+			e->get<CInput>().left = false;
+		}
+		break;
+	case sf::Keyboard::Scancode::S:
+		for (auto e : entityManager.getEntities("player")) {
+			std::cout << "key up\n";
+			e->get<CInput>().down = false;
+		}
+		break;
+	case sf::Keyboard::Scancode::D:
+		for (auto e : entityManager.getEntities("player")) {
+			std::cout << "key up\n";
+			e->get<CInput>().right = false;
+		}
+		break;
 	}
 }
 

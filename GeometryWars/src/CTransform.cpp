@@ -2,52 +2,32 @@
 
 CTransform::CTransform(){}
 
-CTransform::CTransform(Vec2<float> pos, float velocity):
-	m_pos(pos),
-	m_velocity(velocity){
+CTransform::CTransform(Vec2<float> posIn, Vec2<float> velocityIn):
+	pos(posIn),
+	velocity(velocityIn){
 }
 
-CTransform::CTransform(Vec2<float> pos, float velocity, Vec2<float> scale, float angle):
-	m_pos(pos),
-	m_velocity(velocity),
-	m_scale(scale),
-	m_angle(angle){
+CTransform::CTransform(Vec2<float> posIn, Vec2<float> velocityIn, Vec2<float> scaleIn, float angleIn):
+	pos(posIn),
+	velocity(velocityIn),
+	scale(scaleIn),
+	angle(angleIn){
 }
 
-void CTransform::setPos(Vec2<float> pos){
-	m_pos = pos;
+void CTransform::setPos(Vec2<float> posIn){
+	pos = posIn;
 }
 
-void CTransform::setVel(float velocity){
-	m_velocity = velocity;
+void CTransform::setVel(Vec2<float> velocityIn){
+	velocity = velocityIn;
 }
 
-void CTransform::setScale(Vec2<float> scale){
-	m_scale = scale;
+void CTransform::setScale(Vec2<float> scaleIn){
+	scale = scaleIn;
 }
 
-void CTransform::setAngle(float angle){
-	m_angle = angle;
-}
-
-Vec2<float>& CTransform::getPos()
-{
-	return m_pos;
-}
-
-float& CTransform::getAngle()
-{
-	return m_angle;
-}
-
-float& CTransform::getVel()
-{
-	return m_velocity;
-}
-
-Vec2<float>& CTransform::getScaler()
-{
-	return m_scale;
+void CTransform::setAngle(float angleIn){
+	angle = angleIn;
 }
 
 

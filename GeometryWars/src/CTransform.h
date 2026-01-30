@@ -5,25 +5,21 @@
 
 
 class CTransform: public Component {
-	Vec2<float> m_pos{};
-	float m_velocity{};
-	Vec2<float> m_scale{};
-	float m_angle{};
+	
 
 public:
+	Vec2<float> pos{};
+	Vec2<float> velocity{};
+	Vec2<float> scale{};
+	float angle{};
+
 	CTransform();
-	CTransform(Vec2<float> pos, float velocity);
-	CTransform(Vec2<float> pos, float velocity, Vec2<float> scale, float angle);
+	CTransform(Vec2<float> pos, Vec2<float> velocity);
+	CTransform(Vec2<float> pos, Vec2<float> velocity, Vec2<float> scale, float angle);
 
 
 	void setPos(Vec2<float> pos);
-	void setVel(float velocity);
+	void setVel(Vec2<float> velocity);
 	void setScale(Vec2<float> scale);
 	void setAngle(float angle);
-
-	Vec2<float>& getPos();
-	float& getAngle();
-	float& getVel();
-	Vec2<float>& getScaler();
-
 };

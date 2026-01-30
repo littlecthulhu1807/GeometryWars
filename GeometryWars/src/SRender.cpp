@@ -13,7 +13,7 @@ void SRender::drawCalls(EntityManager& entityM){
         m_window.clear();
         for (auto& e : entityM.getEntities()) {
             if (e->get<CShape>().exists) {
-                m_window.draw(e->get<CShape>().getShape());
+                m_window.draw(e->get<CShape>().shape);
             }
         }
     }

@@ -51,7 +51,7 @@ EntityVec& EntityManager::getEntities(std::string tag){
 void EntityManager::spawnEnemy(){
 	
 	std::shared_ptr<Entity> tempEntity = addEntity("enemy");
-	tempEntity->add<CTransform>(Vec2<float>(200.0f, 200.0f), 10.0f);
+	tempEntity->add<CTransform>(Vec2<float>(200.0f, 200.0f), Vec2<float>(15.0f, 15.0f));
 	//tempEntity->add<CCollision>();
 	//tempEntity->add<CScore>();
 	tempEntity->add<CShape>(50.0f, 5, sf::Color::Blue);
@@ -74,7 +74,7 @@ void EntityManager::spawnBullet(){
 std::shared_ptr<Entity> EntityManager::spawnPlayer(){
 	std::shared_ptr<Entity> tempEntity = addEntity("player");
 	tempEntity->add<CShape>(50.0f, 10, sf::Color::Red);
-	tempEntity->add<CTransform>(Vec2<float>(300.0f, 400.0f), 50.0f);
+	tempEntity->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(10.0f, 10.0f));
 	tempEntity->add<CInput>();
 	return tempEntity;
 }
