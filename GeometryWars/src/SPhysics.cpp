@@ -2,6 +2,7 @@
 
 void SPhysics::updateMovement(EntityManager& entityM, int width, int height){
     updatePlayer(entityM);
+    updateBullet(entityM);
     updateEnemyType(entityM, width, height);
 }
 
@@ -75,13 +76,26 @@ void SPhysics::updateEnemyType(EntityManager& entityM, int width, int height){
                 
 
                 if (tempshape.shape.getPosition().x >= width || tempshape.shape.getPosition().x <= 0) {
-                    std::cout << "width bound hit!\n";
                     trans.velocity.x = trans.velocity.x * -1;
                 }
                 if (tempshape.shape.getPosition().y >= height || tempshape.shape.getPosition().y <= 0) {
-                    std::cout << "height bound hit!\n";
                     trans.velocity.y = trans.velocity.y * -1;
                 }
+            }
+            tempshape.shape.setRotation(tempshape.shape.getRotation() + sf::degrees(2.0f));
+        }
+    }
+}
+
+void SPhysics::updateBullet(EntityManager& entityM) {
+    for (auto& e : entityM.getEntities("bullet")) {
+        if (e->get<CTransform>().exists) {
+            auto& trans = e->get<CTransform>();
+            auto& tempshape = e->get<CShape>();
+
+            if (physicsCalc) {
+                tempshape.shape.setPosition({ trans.pos.x + trans.velocity.x, trans.pos.y + trans.velocity.y });
+                trans.setPos({ tempshape.shape.getPosition() });
             }
             tempshape.shape.setRotation(tempshape.shape.getRotation() + sf::degrees(2.0f));
         }

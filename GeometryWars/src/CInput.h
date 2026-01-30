@@ -10,8 +10,5 @@ public:
 	bool down = false;
 	bool left = false;
 	bool right = false;
-	//bool shoot;
-	//bool altShoot;
-
 private:
 };

@@ -63,10 +63,63 @@ void Game::imGuiUpdate(){
             //execute Tab Content
             ImGui::Text("Some Text2");
             if (ImGui::CollapsingHeader("Entity by Tag")) {
-                ImGui::Text("Some Text3");
+                if (ImGui::CollapsingHeader("Player")) {
+                    for (auto& e : m_entityManager.getEntities("player")) {
+                        std::string btnTxT = "D##D" + std::to_string(e->id());
+                        ImGui::Text(e->tag().c_str());
+                        ImGui::SameLine();
+                        ImGui::Text("%d", e->id());
+                        ImGui::SameLine();
+                        if (ImGui::Button(btnTxT.c_str())) {
+                            std::cout << btnTxT << '\n';
+                        };
+                        ImGui::SetItemTooltip("Delete Entity");
+                    }
+
+                }
+                if (ImGui::CollapsingHeader("Bullets")) {
+                    for (auto& e : m_entityManager.getEntities("bullet")) {
+                        std::string btnTxT = "D##D" + std::to_string(e->id());
+                        ImGui::Text(e->tag().c_str());
+                        ImGui::SameLine();
+                        ImGui::Text("%d", e->id());
+                        ImGui::SameLine();
+                        if (ImGui::Button(btnTxT.c_str())) {
+                            std::cout << btnTxT << '\n';
+                        };
+                        ImGui::SetItemTooltip("Delete Entity");
+                    }
+
+                }
+                if (ImGui::CollapsingHeader("Enemies")) {
+                    for (auto& e : m_entityManager.getEntities("enemy")) {
+                        std::string btnTxT = "D##D" + std::to_string(e->id());
+                        ImGui::Text(e->tag().c_str());
+                        ImGui::SameLine();
+                        ImGui::Text("%d", e->id());
+                        ImGui::SameLine();
+                        if (ImGui::Button(btnTxT.c_str())) {
+                            std::cout << btnTxT << '\n';
+                        };
+                        ImGui::SetItemTooltip("Delete Entity");
+                    }
+
+                }
+                
             }
             if (ImGui::CollapsingHeader("All Entities")) {
-                ImGui::Text("Some Text4");
+                for (auto& e : m_entityManager.getEntities()) {
+                    std::string btnTxT = "D##D" + std::to_string(e->id());
+                    ImGui::Text(e->tag().c_str());
+                    ImGui::SameLine();
+                    ImGui::Text("%d", e->id());
+                    ImGui::SameLine();
+                    if (ImGui::Button(btnTxT.c_str())) {
+                        std::cout << btnTxT << '\n';
+                    };
+                    ImGui::SetItemTooltip("Delete Entity");
+                }
+                
             }
             ImGui::EndTabItem();
         }

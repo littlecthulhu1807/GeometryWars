@@ -11,4 +11,5 @@ public:
 
 	void updatePlayer(EntityManager& entityM);
 	void updateEnemyType(EntityManager& entityM, int width, int height);
+	void updateBullet(EntityManager& entityM);
 };
