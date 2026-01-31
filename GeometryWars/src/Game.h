@@ -4,6 +4,7 @@
 #include"SRender.h"
 #include"SPhysics.h"
 #include"SInput.h"
+#include"SSpawner.h"
 #include"Vec2.hpp"
 
 #include "imgui.h"
@@ -24,6 +25,7 @@ class Game {
 	SRender m_sRender;
 	SPhysics m_sPhysics;
 	SInput m_sInput;
+	SSpawner m_sSpawner = SSpawner(m_entityManager);
 
 	std::shared_ptr<Entity> m_player;
 

@@ -36,7 +36,7 @@ void Game::pollEvents()
             m_sInput.matchKeyRelease(keyPressed->scancode, m_entityManager);
         }
         else if (const auto* mouseEvent = event->getIf<sf::Event::MouseButtonPressed>()) {
-            m_sInput.matchMouseInput(mouseEvent->button);
+            m_sInput.matchMouseInput(mouseEvent->button, mouseEvent->position, m_entityManager);
         }
     }
 }
@@ -150,6 +150,7 @@ void Game::run(){
         m_sRender.drawDisplay();
 
         //Update EntityManager (Spawn/Delete)
+        m_entityManager.update();
     }
 
     ImGui::SFML::Shutdown();

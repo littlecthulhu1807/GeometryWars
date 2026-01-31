@@ -25,9 +25,9 @@ public:
 	EntityManager();
 	~EntityManager();
 
-	void init();
 	void update();
-	std::shared_ptr<Entity> addEntity(const std::string& tag);
+	std::shared_ptr<Entity> addEntity(std::shared_ptr<Entity>& ptr);
+	std::shared_ptr<Entity> addToWaitList(const std::string& tag);
 	void deletEntity(EntityVec& entity);
 	EntityVec& getEntities();
 	EntityVec& getEntities(std::string tag);

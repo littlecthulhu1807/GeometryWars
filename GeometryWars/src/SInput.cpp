@@ -75,10 +75,11 @@ void SInput::matchKeyRelease(sf::Keyboard::Scancode keyprelease, EntityManager& 
 	}
 }
 
-void SInput::matchMouseInput(sf::Mouse::Button button) {
+void SInput::matchMouseInput(sf::Mouse::Button button, sf::Vector2i targetPos, EntityManager& entityManager) {
 	switch (button){
 	case sf::Mouse::Button::Left:
-		std::cout << "Left Mouse! Attack!\n";
+		//std::cout << "Left Mouse! Attack! " <<targetPos.x << targetPos.y <<'\n';
+		entityManager.spawnBullet();
 		break;
 	case sf::Mouse::Button::Right:
 		std::cout << "Right Mouse! Special Attack\n";

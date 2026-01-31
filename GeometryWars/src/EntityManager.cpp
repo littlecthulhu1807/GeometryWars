@@ -14,25 +14,38 @@ EntityManager::~EntityManager() {
 	m_toRemove.clear();
 }
 
-void EntityManager::init(){
-}
-
 void EntityManager::update(){
+	//Update Lifespans
+	for (auto& e : m_entityMap["bullet"]) {
+		e->get<CLifespan>().updateLifespan();
+	}
+	//Add Entities in queque
+	for (auto& e : m_toAdd) {
+		addEntity(e);
+	}
+	m_toAdd.clear();
+	//delete Entities in queque
+	for (auto& e : m_toRemove) {
+	}
+	m_toRemove.clear();
 }
 
-std::shared_ptr<Entity> EntityManager::addEntity(const std::string& tag){
-	//create a new Entity object
-	std::shared_ptr<Entity> ptr(new Entity(tag, m_totalEntities));
+std::shared_ptr<Entity> EntityManager::addEntity(std::shared_ptr<Entity>& ptr){
 
 	//store it in a vector
 	m_EntityVec.push_back(ptr);
 
 	//store in a map of tag_entityVector
-	m_entityMap[tag].push_back(ptr);
-
-	m_totalEntities++;
+	m_entityMap[ptr->tag()].push_back(ptr);
 
 	//return the shared pointer pointing to that entity
+	return ptr;
+}
+
+std::shared_ptr<Entity> EntityManager::addToWaitList(const std::string& tag){
+	std::shared_ptr<Entity> ptr(new Entity(tag, m_totalEntities));
+	m_toAdd.push_back(ptr);
+	m_totalEntities++;
 	return ptr;
 }
 
@@ -48,31 +61,34 @@ EntityVec& EntityManager::getEntities(std::string tag){
 	return m_entityMap[tag];
 }
 
+
+
+
+
+
+
+
 void EntityManager::spawnEnemy(){
 	
-	std::shared_ptr<Entity> tempEntity = addEntity("enemy");
-	tempEntity->add<CTransform>(Vec2<float>(200.0f, 200.0f), Vec2<float>(15.0f, 15.0f));
+	std::shared_ptr<Entity> tempEntity = addToWaitList("enemy");
+	tempEntity->add<CTransform>(Vec2<float>(200.0f, 200.0f), Vec2<float>(5.0f, 5.0f));
 	//tempEntity->add<CCollision>();
 	//tempEntity->add<CScore>();
 	tempEntity->add<CShape>(50.0f, 5, sf::Color::Blue);
 	//tempEntity->add<CLifespan>();
-	
-
 }
 
 void EntityManager::spawnBullet(){
-	/*
-	std::shared_ptr<Entity> tempEntity = addEntity("bullet");
-	tempEntity->add<CTransform>();
-	tempEntity->add<CCollision>();
-	tempEntity->add<CScore>();
-	tempEntity->add<CShape>();
-	tempEntity->add<CLifespan>();
-	*/
+	std::shared_ptr<Entity> tempEntity = addToWaitList("bullet");
+	tempEntity->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(5.0f, 5.0f));
+	//tempEntity->add<CCollision>();
+	tempEntity->add<CShape>(10.0f, 10, sf::Color::White);
+	//tempEntity->add<CLifespan>();
+	
 }
 
 std::shared_ptr<Entity> EntityManager::spawnPlayer(){
-	std::shared_ptr<Entity> tempEntity = addEntity("player");
+	std::shared_ptr<Entity> tempEntity = addToWaitList("player");
 	tempEntity->add<CShape>(50.0f, 10, sf::Color::Red);
 	tempEntity->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(10.0f, 10.0f));
 	tempEntity->add<CInput>();

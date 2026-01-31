@@ -196,6 +196,7 @@ ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="src\SInput.cpp" />
     <ClCompile Include="src\SPhysics.cpp" />
     <ClCompile Include="src\SRender.cpp" />
+    <ClCompile Include="src\SSpawner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\external\SFML\bin\sfml-audio-3.dll">
@@ -244,6 +245,7 @@ ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="src\SInput.h" />
     <ClInclude Include="src\SPhysics.h" />
     <ClInclude Include="src\SRender.h" />
+    <ClInclude Include="src\SSpawner.h" />
     <ClInclude Include="src\Vec2.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

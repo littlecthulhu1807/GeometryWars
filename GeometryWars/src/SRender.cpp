@@ -1,7 +1,6 @@
 #include"SRender.h"
 
-SRender::SRender(){
-}
+SRender::SRender(){}
 
 void SRender::sRenderInit(unsigned int width, unsigned int height){
     m_window = sf::RenderWindow(sf::VideoMode({ width, height }), "Geometry Wars!");
