@@ -5,7 +5,8 @@
 #include<memory> 
 #include<iostream>
 #include<string>
-#include<vector>
+#include <vector>
+#include<algorithm>
 #include<map>
 #include<random>
 
@@ -28,7 +29,7 @@ public:
 	void update();
 	std::shared_ptr<Entity> addEntity(std::shared_ptr<Entity>& ptr);
 	std::shared_ptr<Entity> addToWaitList(const std::string& tag);
-	void deletEntity(EntityVec& entity);
+	void deletEntity(std::shared_ptr<Entity>&);
 	EntityVec& getEntities();
 	EntityVec& getEntities(std::string tag);
 

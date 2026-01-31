@@ -18,6 +18,10 @@ void EntityManager::update(){
 	//Update Lifespans
 	for (auto& e : m_entityMap["bullet"]) {
 		e->get<CLifespan>().updateLifespan();
+		if (e->get<CLifespan>().lifespanLeft <= 0){
+			std::cout << "Bullet dies\n";
+			deletEntity(e);
+		}
 	}
 	//Add Entities in queque
 	for (auto& e : m_toAdd) {
@@ -26,18 +30,32 @@ void EntityManager::update(){
 	m_toAdd.clear();
 	//delete Entities in queque
 	for (auto& e : m_toRemove) {
+		m_EntityVec.erase(
+			std::remove_if(m_EntityVec.begin(), m_EntityVec.end(),
+				[&](const std::shared_ptr<Entity>& entity) {
+					// Check if this entity is in m_toRemove
+					return std::find(m_toRemove.begin(), m_toRemove.end(), entity) != m_toRemove.end();
+				}),
+			m_EntityVec.end()
+		);
+
+		m_entityMap[e->tag()].erase(
+			std::remove_if(m_entityMap[e->tag()].begin(), m_entityMap[e->tag()].end(),
+				[&](const std::shared_ptr<Entity>& entity) {
+					// Check if this entity is in m_toRemove
+					return std::find(m_toRemove.begin(), m_toRemove.end(), entity) != m_toRemove.end();
+				}),
+			m_entityMap[e->tag()].end()
+		);
 	}
 	m_toRemove.clear();
 }
 
 std::shared_ptr<Entity> EntityManager::addEntity(std::shared_ptr<Entity>& ptr){
-
 	//store it in a vector
 	m_EntityVec.push_back(ptr);
-
 	//store in a map of tag_entityVector
 	m_entityMap[ptr->tag()].push_back(ptr);
-
 	//return the shared pointer pointing to that entity
 	return ptr;
 }
@@ -49,8 +67,8 @@ std::shared_ptr<Entity> EntityManager::addToWaitList(const std::string& tag){
 	return ptr;
 }
 
-void EntityManager::deletEntity(EntityVec& entity){
-	
+void EntityManager::deletEntity(std::shared_ptr<Entity>& entity){
+	m_toRemove.push_back(entity);
 }
 
 EntityVec& EntityManager::getEntities(){
@@ -83,7 +101,7 @@ void EntityManager::spawnBullet(){
 	tempEntity->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(5.0f, 5.0f));
 	//tempEntity->add<CCollision>();
 	tempEntity->add<CShape>(10.0f, 10, sf::Color::White);
-	//tempEntity->add<CLifespan>();
+	tempEntity->add<CLifespan>(60);
 	
 }
 

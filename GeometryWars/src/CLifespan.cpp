@@ -3,15 +3,10 @@
 CLifespan::CLifespan(){}
 
 CLifespan::CLifespan(int lifespanIn):
-lifespan(lifespanIn){}
-
-void CLifespan::updateLifespan(){
-	--lifespan;
-	if (lifespan <= 0){
-		kill();
-	}
+lifespan(lifespanIn){
+	lifespanLeft = lifespan;
 }
 
-void CLifespan::kill(){
-
+void CLifespan::updateLifespan(){
+	--lifespanLeft;
 }

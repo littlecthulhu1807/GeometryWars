@@ -11,7 +11,6 @@ public:
 	int lifespanLeft = 0;
 
 	void updateLifespan();
-	void kill();
 
 private:
 
