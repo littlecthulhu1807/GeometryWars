@@ -135,11 +135,11 @@ void Game::run(){
         //Poll Events/ Input System
         pollEvents();
 
-        //Collision
-        m_sCollision.checkCollision();
-
         //Move
         m_sPhysics.updateMovement(m_entityManager, m_width, m_height);
+
+        //Collision
+        m_sCollision.checkCollision();
 
         //Imgui Updates
         imGuiUpdate();
