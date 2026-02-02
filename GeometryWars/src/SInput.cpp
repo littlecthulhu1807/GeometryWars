@@ -79,7 +79,7 @@ void SInput::matchMouseInput(sf::Mouse::Button button, sf::Vector2i targetPos, E
 	switch (button){
 	case sf::Mouse::Button::Left:
 		//std::cout << "Left Mouse! Attack! " <<targetPos.x << targetPos.y <<'\n';
-		entityManager.spawnBullet();
+		entityManager.spawnBullet(targetPos);
 		break;
 	case sf::Mouse::Button::Right:
 		std::cout << "Right Mouse! Special Attack\n";

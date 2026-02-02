@@ -57,8 +57,6 @@ void SPhysics::updatePlayer(EntityManager& entityM){
 
             }
 
-
-            
             tempShape.shape.setRotation(tempShape.shape.getRotation() + sf::degrees(2.0f));
         }
     }

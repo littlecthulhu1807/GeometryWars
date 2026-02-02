@@ -21,6 +21,8 @@ class EntityManager{
 	EntityVec m_toRemove; //Std::Vector of entities to remove for next frame
 	unsigned int m_totalEntities = 0; //int counting up and used as an ID for entities
 
+	std::shared_ptr<Entity> m_player;
+
 
 public:
 	EntityManager();
@@ -34,7 +36,7 @@ public:
 	EntityVec& getEntities(std::string tag);
 
 	void spawnEnemy();
-	void spawnBullet();
+	void spawnBullet(sf::Vector2i targetPos);
 	std::shared_ptr<Entity> spawnPlayer();
 
 };
