@@ -25,6 +25,9 @@ class EntityManager{
 
 
 public:
+
+	bool lifespanCalc = true;
+
 	EntityManager();
 	~EntityManager();
 
@@ -39,5 +42,7 @@ public:
 	void spawnBullet(sf::Vector2i targetPos);
 	std::shared_ptr<Entity> spawnPlayer();
 	void resetPlayer();
+
+	void switchLifespanCalc();
 
 };

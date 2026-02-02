@@ -3,7 +3,7 @@
 Entity::Entity(std::string tag, unsigned int id):
 m_tag(tag),
 m_id(id){
-	std::cout << "Created object: " << this->tag().c_str() << " With id: " << this->id() << '\n';
+	//std::cout << "Created object: " << this->tag().c_str() << " With id: " << this->id() << '\n';
 }
 
 unsigned int Entity::id() const{

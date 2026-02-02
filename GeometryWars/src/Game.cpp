@@ -46,7 +46,10 @@ void Game::pollEvents()
             m_sInput.matchKeyRelease(keyPressed->scancode, m_entityManager);
         }
         else if (const auto* mouseEvent = event->getIf<sf::Event::MouseButtonPressed>()) {
-            m_sInput.matchMouseInput(mouseEvent->button, mouseEvent->position, m_entityManager);
+            if (!ImGui::GetIO().WantCaptureMouse) { //only capture mouse outside of ImGUI windows
+                m_sInput.matchMouseInput(mouseEvent->button, mouseEvent->position, m_entityManager);
+            }
+            
         }
     }
 }
@@ -56,7 +59,6 @@ void Game::imGuiInit(){
 }
 
 void Game::imGuiUpdate(){
-    //std::cout << "Hello\n";
     ImGui::SFML::Update(m_sRender.getWindow(), m_deltaClock.restart());
     ImGui::Begin("Geometry Wars Control Board");
     if (ImGui::BeginTabBar("TabBar")) {
@@ -64,7 +66,7 @@ void Game::imGuiUpdate(){
             //execute Tab Content
             ImGui::Text("Some Text");
             ImGui::Checkbox("Movement", &m_sPhysics.physicsCalc);
-            //ImGui::Checkbox("Lifespan", &m_sPhysics.m_physicsCalc);
+            ImGui::Checkbox("Lifespan", &m_entityManager.lifespanCalc);
             //ImGui::Checkbox("Collision", &m_sPhysics.m_physicsCalc);
             //ImGui::Checkbox("Spawning", &m_sPhysics.m_physicsCalc);
             ImGui::EndTabItem();
@@ -81,7 +83,7 @@ void Game::imGuiUpdate(){
                         ImGui::Text("%d", e->id());
                         ImGui::SameLine();
                         if (ImGui::Button(btnTxT.c_str())) {
-                            std::cout << btnTxT << '\n';
+                            m_entityManager.deletEntity(e);
                         };
                         ImGui::SetItemTooltip("Delete Entity");
                     }
@@ -95,7 +97,7 @@ void Game::imGuiUpdate(){
                         ImGui::Text("%d", e->id());
                         ImGui::SameLine();
                         if (ImGui::Button(btnTxT.c_str())) {
-                            std::cout << btnTxT << '\n';
+                            m_entityManager.deletEntity(e);
                         };
                         ImGui::SetItemTooltip("Delete Entity");
                     }
@@ -109,7 +111,7 @@ void Game::imGuiUpdate(){
                         ImGui::Text("%d", e->id());
                         ImGui::SameLine();
                         if (ImGui::Button(btnTxT.c_str())) {
-                            std::cout << btnTxT << '\n';
+                            m_entityManager.deletEntity(e);
                         };
                         ImGui::SetItemTooltip("Delete Entity");
                     }
@@ -125,7 +127,7 @@ void Game::imGuiUpdate(){
                     ImGui::Text("%d", e->id());
                     ImGui::SameLine();
                     if (ImGui::Button(btnTxT.c_str())) {
-                        std::cout << btnTxT << '\n';
+                        m_entityManager.deletEntity(e);
                     };
                     ImGui::SetItemTooltip("Delete Entity");
                 }

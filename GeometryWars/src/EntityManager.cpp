@@ -16,11 +16,12 @@ EntityManager::~EntityManager() {
 
 void EntityManager::update(){
 	//Update Lifespans
-	for (auto& e : m_entityMap["bullet"]) {
-		e->get<CLifespan>().updateLifespan();
-		if (e->get<CLifespan>().lifespanLeft <= 0){
-			std::cout << "Bullet dies\n";
-			deletEntity(e);
+	if (lifespanCalc) {
+		for (auto& e : m_entityMap["bullet"]) {
+			e->get<CLifespan>().updateLifespan();
+			if (e->get<CLifespan>().lifespanLeft <= 0) {
+				deletEntity(e);
+			}
 		}
 	}
 	//Add Entities in queque
@@ -117,7 +118,15 @@ std::shared_ptr<Entity> EntityManager::spawnPlayer(){
 }
 
 void EntityManager::resetPlayer(){
-	std::cout << "Player Reset";
 	m_player->get<CTransform>().setPos(Vec2<float>(300.0f, 400.0f));
 	m_player->get<CShape>().shape.setPosition({ 300.0f, 400.0f });
+}
+
+void EntityManager::switchLifespanCalc(){
+	if (lifespanCalc) {
+		lifespanCalc = false;
+	}
+	else{
+		lifespanCalc = true;
+	}
 }
