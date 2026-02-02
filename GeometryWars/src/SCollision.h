@@ -10,6 +10,7 @@ public:
 
 	SCollision(EntityManager& entityManager);
 
-	void checkCollision();
+	void checkCollision(unsigned int& score);
+	unsigned int addScore(std::shared_ptr<Entity> entity);
 
 };

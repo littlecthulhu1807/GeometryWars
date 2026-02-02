@@ -19,6 +19,7 @@ class Game {
 
 	unsigned int m_width = 1280;
 	unsigned int m_height = 960;
+	unsigned int m_score = 0;
 
 	EntityManager m_entityManager;
 	sf::Clock m_deltaClock;

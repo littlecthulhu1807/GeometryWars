@@ -23,7 +23,7 @@ void Game::gameInit(){
         std::cout << "COULD NOT LOAD FONT " << "fonts/Tiny-Regular.ttf" << '\n';
     }
     m_scoreText.setFont(m_mainFont);
-    m_scoreText.setString("200");
+    m_scoreText.setString(std::to_string(m_score));
     m_scoreText.setCharacterSize(26);
     m_scoreText.setFillColor(sf::Color::White);
     m_scoreText.setPosition({ 0,0 });
@@ -49,7 +49,6 @@ void Game::pollEvents()
             if (!ImGui::GetIO().WantCaptureMouse) { //only capture mouse outside of ImGUI windows
                 m_sInput.matchMouseInput(mouseEvent->button, mouseEvent->position, m_entityManager);
             }
-            
         }
     }
 }
@@ -150,8 +149,9 @@ void Game::run(){
         //Move
         m_sPhysics.updateMovement(m_entityManager, m_width, m_height);
 
-        //Collision
-        m_sCollision.checkCollision();
+        //Collision & Score
+        m_sCollision.checkCollision(m_score);
+        m_scoreText.setString(std::to_string(m_score));
 
         //Imgui Updates
         imGuiUpdate();

@@ -5,7 +5,7 @@
 class CScore : public Component {
 public:
 	CScore();
-	int score{};
+	int score = 100;
 
 private:
 };
