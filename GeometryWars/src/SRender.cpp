@@ -7,7 +7,7 @@ void SRender::sRenderInit(unsigned int width, unsigned int height){
     m_window.setFramerateLimit(60);
 }
 
-void SRender::drawCalls(EntityManager& entityM){
+void SRender::drawCalls(EntityManager& entityM, sf::Text scoreText){
     if (m_rendering){
         m_window.clear();
         for (auto& e : entityM.getEntities()) {
@@ -15,6 +15,7 @@ void SRender::drawCalls(EntityManager& entityM){
                 m_window.draw(e->get<CShape>().shape);
             }
         }
+        m_window.draw(scoreText);
     }
 }
 

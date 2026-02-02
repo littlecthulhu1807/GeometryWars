@@ -93,6 +93,7 @@
     <CopyFileToFolders Include="..\external\SFML\bin\sfml-system-d-3.dll" />
     <CopyFileToFolders Include="..\external\SFML\bin\sfml-window-3.dll" />
     <CopyFileToFolders Include="..\external\SFML\bin\sfml-window-d-3.dll" />
+    <CopyFileToFolders Include="fonts\Tiny-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h">

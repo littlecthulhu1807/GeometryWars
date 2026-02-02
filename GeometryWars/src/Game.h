@@ -29,6 +29,9 @@ class Game {
 	SSpawner m_sSpawner = SSpawner(m_entityManager);
 	SCollision m_sCollision = SCollision(m_entityManager);
 
+	sf::Font m_mainFont;
+	sf::Text m_scoreText{ m_mainFont };
+
 	std::shared_ptr<Entity> m_player;
 
 	void pollEvents();

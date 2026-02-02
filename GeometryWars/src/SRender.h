@@ -16,7 +16,7 @@ public:
 	SRender();
 
 	void sRenderInit(unsigned int width, unsigned int height);
-	void drawCalls(EntityManager& entityM);
+	void drawCalls(EntityManager& entityM, sf::Text scoreText);
 	void drawDisplay();
 
 	void setRendering(bool rendering);

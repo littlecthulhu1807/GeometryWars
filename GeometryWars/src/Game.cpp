@@ -17,6 +17,16 @@ void Game::gameInit(){
 
     m_player = m_entityManager.spawnPlayer();
     m_entityManager.spawnEnemy();
+
+    if (!m_mainFont.openFromFile("fonts/Tiny-Regular.ttf"))
+    {
+        std::cout << "COULD NOT LOAD FONT " << "fonts/Tiny-Regular.ttf" << '\n';
+    }
+    m_scoreText.setFont(m_mainFont);
+    m_scoreText.setString("200");
+    m_scoreText.setCharacterSize(26);
+    m_scoreText.setFillColor(sf::Color::White);
+    m_scoreText.setPosition({ 0,0 });
 }
 
 void Game::pollEvents()
@@ -146,7 +156,7 @@ void Game::run(){
 
         //Render
         //Iterate through Enteties and draw all enteties with Shape Component
-        m_sRender.drawCalls(m_entityManager);
+        m_sRender.drawCalls(m_entityManager, m_scoreText);
         ImGui::SFML::Render(m_sRender.getWindow());
         m_sRender.drawDisplay();
 
