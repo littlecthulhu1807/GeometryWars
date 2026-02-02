@@ -90,7 +90,7 @@ void EntityManager::spawnEnemy(){
 	
 	std::shared_ptr<Entity> tempEntity = addToWaitList("enemy");
 	tempEntity->add<CTransform>(Vec2<float>(200.0f, 200.0f), Vec2<float>(5.0f, 5.0f));
-	//tempEntity->add<CCollision>();
+	tempEntity->add<CCollision>(25.0f);
 	//tempEntity->add<CScore>();
 	tempEntity->add<CShape>(50.0f, 5, sf::Color::Blue);
 	//tempEntity->add<CLifespan>();
@@ -98,10 +98,10 @@ void EntityManager::spawnEnemy(){
 
 void EntityManager::spawnBullet(sf::Vector2i targetPos){
 	Vec2<float> target = Vec2<float>(targetPos.x, targetPos.y);
-	Vec2<float> targetDirection = m_player->get<CTransform>().pos.distance(target).normalize().scale(5); //
+	Vec2<float> targetDirection = m_player->get<CTransform>().pos.distance(target).normalize().scale(15);
 	std::shared_ptr<Entity> tempEntity = addToWaitList("bullet");
 	tempEntity->add<CTransform>(m_player->get<CTransform>().pos, targetDirection);
-	//tempEntity->add<CCollision>();
+	tempEntity->add<CCollision>(5.0f);
 	tempEntity->add<CShape>(10.0f, 10, sf::Color::White);
 	tempEntity->add<CLifespan>(120);
 	

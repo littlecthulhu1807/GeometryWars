@@ -136,6 +136,7 @@ void Game::run(){
         pollEvents();
 
         //Collision
+        m_sCollision.checkCollision();
 
         //Move
         m_sPhysics.updateMovement(m_entityManager, m_width, m_height);
