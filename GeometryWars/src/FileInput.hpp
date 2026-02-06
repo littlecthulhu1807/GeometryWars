@@ -90,18 +90,21 @@ public:
 
 	ConfigReader(){};
 
-	void readData(const char* filename) {
+	bool readData(const char* filename) {
 		std::ifstream fin(filename);
 		std::string temp;
 
-		if (temp == "Window") {
-			fin >> windowData.width >> windowData.height >> windowData.frameLimit;
-			std::cout << "Window Data: " << windowData.width << ' ' << windowData.height << ' ' << windowData.frameLimit << '\n';
+		while (fin >> temp) {
+			if (temp == "Window") {
+				fin >> windowData.width >> windowData.height >> windowData.frameLimit;
+				std::cout << "Window Data: " << windowData.width << ' ' << windowData.height << ' ' << windowData.frameLimit << '\n';
+			}
+			else if (temp == "Font") {
+				fin >> fontData.filePath >> fontData.size >> fontData.r >> fontData.g >> fontData.b;
+				std::cout << "Font Data: " << fontData.filePath << ' ' << fontData.size << ' ' << fontData.r << fontData.g << fontData.b << '\n';
+			}
 		}
-		else if (temp == "Font") {
-			fin >> fontData.filePath >> fontData.size >> fontData.r >> fontData.g >> fontData.b;
-			std::cout << "Font Data: " << fontData.filePath << ' ' << fontData.size << ' ' << fontData.r << fontData.g << fontData.b << '\n';
-		}
+		return true;
 	}
 
 };

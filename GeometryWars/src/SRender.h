@@ -15,7 +15,7 @@ class SRender {
 public:
 	SRender();
 
-	void sRenderInit(unsigned int width, unsigned int height);
+	void sRenderInit(unsigned int width, unsigned int height, unsigned int frameLimit);
 	void drawCalls(EntityManager& entityM, sf::Text scoreText);
 	void drawDisplay();
 

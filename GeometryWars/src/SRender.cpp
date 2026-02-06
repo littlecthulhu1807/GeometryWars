@@ -2,9 +2,9 @@
 
 SRender::SRender(){}
 
-void SRender::sRenderInit(unsigned int width, unsigned int height){
+void SRender::sRenderInit(unsigned int width, unsigned int height, unsigned int frameLimit){
     m_window = sf::RenderWindow(sf::VideoMode({ width, height }), "Geometry Wars!");
-    m_window.setFramerateLimit(60);
+    m_window.setFramerateLimit(frameLimit);
 }
 
 void SRender::drawCalls(EntityManager& entityM, sf::Text scoreText){

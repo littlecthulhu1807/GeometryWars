@@ -1,6 +1,6 @@
 Window
 1920
-180
+1080
 60
 FullScreen?
 

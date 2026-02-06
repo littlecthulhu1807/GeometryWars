@@ -10,24 +10,30 @@ Game::~Game(){
 void Game::gameInit(){
 
     m_configReader = ConfigReader();
-    m_configReader.readData("config/Config.txt");
+    if (m_configReader.readData("config/Config.txt")) {}
+    else
+        std::cout << "ERROR FAILED TO LOAD CONFIG!";
+
+    m_width = m_configReader.windowData.width;
+    m_height = m_configReader.windowData.height;
+
+
 
     m_sRender = SRender();
-    m_sRender.sRenderInit(m_width, m_height);
+    m_sRender.sRenderInit(m_width, m_height, m_configReader.windowData.frameLimit);
     m_sPhysics = SPhysics();
 
     imGuiInit();
     m_player = m_entityManager.spawnPlayer();
-    m_entityManager.spawnEnemy();
 
-    if (!m_mainFont.openFromFile("fonts/Tiny-Regular.ttf"))
+    if (!m_mainFont.openFromFile(m_configReader.fontData.filePath))
     {
-        std::cout << "COULD NOT LOAD FONT " << "fonts/Tiny-Regular.ttf" << '\n';
+        std::cout << "COULD NOT LOAD FONT " << m_configReader.fontData.filePath << '\n';
     }
     m_scoreText.setFont(m_mainFont);
     m_scoreText.setString(std::to_string(m_score));
-    m_scoreText.setCharacterSize(26);
-    m_scoreText.setFillColor(sf::Color::White);
+    m_scoreText.setCharacterSize(m_configReader.fontData.size);
+    m_scoreText.setFillColor(sf::Color({ uint8_t(m_configReader.fontData.r), uint8_t(m_configReader.fontData.g), uint8_t(m_configReader.fontData.b)}));
     m_scoreText.setPosition({ 0,0 });
 }
 
