@@ -92,7 +92,7 @@ void EntityManager::spawnEnemy(){
 	std::shared_ptr<Entity> tempEntity = addToWaitList("enemy");
 	tempEntity->add<CTransform>(Vec2<float>(200.0f, 200.0f), Vec2<float>(5.0f, 5.0f));
 	tempEntity->add<CCollision>(25.0f);
-	//tempEntity->add<CScore>();
+	tempEntity->add<CScore>(200);
 	tempEntity->add<CShape>(50.0f, 5, sf::Color::Blue);
 }
 

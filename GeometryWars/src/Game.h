@@ -7,6 +7,7 @@
 #include"SSpawner.h"
 #include"SCollision.h"
 #include"Vec2.hpp"
+#include"FileInput.hpp"
 
 #include "imgui.h"
 #include "imgui-SFML.h"
@@ -21,6 +22,7 @@ class Game {
 	unsigned int m_height = 960;
 	unsigned int m_score = 0;
 
+	ConfigReader m_configReader;
 	EntityManager m_entityManager;
 	sf::Clock m_deltaClock;
 	bool m_paused = false;

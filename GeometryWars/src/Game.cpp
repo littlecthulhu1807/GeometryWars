@@ -9,12 +9,14 @@ Game::~Game(){
 
 void Game::gameInit(){
 
+    m_configReader = ConfigReader();
+    m_configReader.readData("config/Config.txt");
+
     m_sRender = SRender();
     m_sRender.sRenderInit(m_width, m_height);
     m_sPhysics = SPhysics();
 
     imGuiInit();
-
     m_player = m_entityManager.spawnPlayer();
     m_entityManager.spawnEnemy();
 

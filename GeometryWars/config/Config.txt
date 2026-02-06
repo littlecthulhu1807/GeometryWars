@@ -1,0 +1,41 @@
+Window
+1920
+180
+60
+FullScreen?
+
+Font
+fonts/Tiny-Regular.ttf
+26
+255
+255
+255
+
+Player
+ShapeRadius 
+CollisionRadius
+Speed
+FillColor (R G B)
+OutlineColor (R G B)
+OutlineThickness
+ShapeVertices
+
+Enemy
+ShapeRadius
+CollisionRadius
+Speed
+FillColor (R G B)
+OutlineColor (R G B)
+OutlineThickness
+Min/MaxVertices (Min Max)
+SmallLifespan
+SpawnInterval
+
+Bullet
+ShapeRadius 
+CollisionRadius
+Speed
+FillColor (R G B)
+OutlineColor (R G B)
+ShapeVertices
+Lifespan

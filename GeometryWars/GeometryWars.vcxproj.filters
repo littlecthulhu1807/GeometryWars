@@ -144,5 +144,11 @@
     <ClInclude Include="src\SSpawner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\FileInput.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="config\Config.txt" />
   </ItemGroup>
 </Project>
