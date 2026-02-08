@@ -12,30 +12,44 @@ fonts/Tiny-Regular.ttf
 255
 
 Player
-ShapeRadius 
-CollisionRadius
-Speed
-FillColor (R G B)
-OutlineColor (R G B)
-OutlineThickness
-ShapeVertices
+50
+25
+10
+255
+0
+0
+0
+0
+255
+5
+10
 
 Enemy
-ShapeRadius
-CollisionRadius
-Speed
-FillColor (R G B)
-OutlineColor (R G B)
-OutlineThickness
-Min/MaxVertices (Min Max)
-SmallLifespan
-SpawnInterval
+70
+35
+5
+155
+0
+155
+255
+0
+0
+5
+3
+6
+80
+60
 
 Bullet
-ShapeRadius 
-CollisionRadius
-Speed
-FillColor (R G B)
-OutlineColor (R G B)
-ShapeVertices
-Lifespan
+10
+6
+15
+255
+255
+255
+100
+100
+100
+1
+6
+120

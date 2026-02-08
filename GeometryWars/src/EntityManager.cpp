@@ -17,7 +17,7 @@ EntityManager::~EntityManager() {
 void EntityManager::update(){
 	//Update Lifespans
 	if (lifespanCalc) {
-		for (auto& e : m_entityMap["bullet"]) {
+		for (auto& e : m_EntityVec) {
 			e->get<CLifespan>().updateLifespan();
 			if (e->get<CLifespan>().lifespanLeft <= 0) {
 				deletEntity(e);
@@ -96,6 +96,15 @@ void EntityManager::spawnEnemy(){
 	tempEntity->add<CShape>(50.0f, 5, sf::Color::Blue);
 }
 
+void  EntityManager::spawnMiniEnemy(){
+	std::shared_ptr<Entity> tempEntity = addToWaitList("enemy");
+	tempEntity->add<CTransform>(Vec2<float>(200.0f, 200.0f), Vec2<float>(5.0f, 5.0f));
+	tempEntity->add<CCollision>(25.0f);
+	tempEntity->add<CScore>(200);
+	tempEntity->add<CShape>(50.0f, 5, sf::Color::Blue);
+	tempEntity->add<CLifespan>(60);
+}
+
 void EntityManager::spawnBullet(sf::Vector2i targetPos){
 	Vec2<float> target = Vec2<float>(targetPos.x, targetPos.y);
 	Vec2<float> targetDirection = m_player->get<CTransform>().pos.distance(target).normalize().scale(15);
@@ -104,10 +113,10 @@ void EntityManager::spawnBullet(sf::Vector2i targetPos){
 	tempEntity->add<CCollision>(5.0f);
 	tempEntity->add<CShape>(10.0f, 10, sf::Color::White);
 	tempEntity->add<CLifespan>(120);
-	
 }
 
-std::shared_ptr<Entity> EntityManager::spawnPlayer(){
+std::shared_ptr<Entity> EntityManager::spawnPlayer(float size, float colRad, float speed, int r, int g, int b,
+	int outR, int outB, int outG, float outThick, int verts) {
 	std::shared_ptr<Entity> tempEntity = addToWaitList("player");
 	tempEntity->add<CShape>(50.0f, 10, sf::Color::Red);
 	tempEntity->add<CCollision>(25.0f);

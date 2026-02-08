@@ -39,8 +39,10 @@ public:
 	EntityVec& getEntities(std::string tag);
 
 	void spawnEnemy();
+	void spawnMiniEnemy();
 	void spawnBullet(sf::Vector2i targetPos);
-	std::shared_ptr<Entity> spawnPlayer();
+	std::shared_ptr<Entity> spawnPlayer(float size, float colRad, float speed, int r, int g, int b,
+		int outR, int outB, int outG, float outThick, int verts);
 	void resetPlayer();
 
 	void switchLifespanCalc();

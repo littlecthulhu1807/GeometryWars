@@ -25,17 +25,17 @@ struct PlayerData {
 
 	PlayerData() {};
 
-	float ShapeRadius;
-	float CollisionRadius;
-	float Speed;
+	float shapeRadius;
+	float collisionRadius;
+	float speed;
 	int r;
 	int g;
 	int b;
 	int oR;
 	int oG;
 	int oB;
-	float OutlineThickness;
-	int ShapeVertices;
+	float outlineThickness;
+	int shapeVertices;
 
 };
 
@@ -43,20 +43,20 @@ struct EnemyData {
 
 	EnemyData() {};
 
-	float ShapeRadius;
-	float CollisionRadius;
-	float Speed;
+	float shapeRadius;
+	float collisionRadius;
+	float speed;
 	int r;
 	int g;
 	int b;
 	int oR;
 	int oG;
 	int oB;
-	float OutlineThickness;
+	float outlineThickness;
 	int minVert;
 	int maxVert;
-	int SmallLifespan;
-	int SpawnInterval;
+	int smallLifespan;
+	int spawnInterval;
 
 };
 
@@ -64,17 +64,17 @@ struct BulletData {
 
 	BulletData() {};
 
-	float ShapeRadius;
-	float CollisionRadius;
-	float Speed;
+	float shapeRadius;
+	float collisionRadius;
+	float speed;
 	int r;
 	int g;
 	int b;
 	int oR;
 	int oG;
 	int oB;
-	float OutlineThickness;
-	int ShapeVertices;
+	float outlineThickness;
+	int shapeVertices;
 	int lifespan;
 
 };
@@ -87,6 +87,9 @@ public:
 
 	WindowData windowData = WindowData();
 	FontData fontData = FontData();
+	PlayerData playerData = PlayerData();
+	EnemyData enemyData = EnemyData();
+	BulletData bulletData = BulletData();
 
 	ConfigReader(){};
 
@@ -102,6 +105,24 @@ public:
 			else if (temp == "Font") {
 				fin >> fontData.filePath >> fontData.size >> fontData.r >> fontData.g >> fontData.b;
 				std::cout << "Font Data: " << fontData.filePath << ' ' << fontData.size << ' ' << fontData.r << fontData.g << fontData.b << '\n';
+			}
+			else if (temp == "Player") {
+				fin >> playerData.shapeRadius >> playerData.collisionRadius >> playerData.speed >> playerData.r >> playerData.g >> playerData.b
+					>> playerData.oR >> playerData.oG >> playerData.oB >> playerData.outlineThickness >> playerData.shapeVertices;
+				std::cout << "Player Data: " << playerData.shapeRadius << playerData.collisionRadius << playerData.speed << playerData.r << playerData.g << playerData.b
+					<< playerData.oR << playerData.oG << playerData.oB << playerData.outlineThickness << playerData.shapeVertices << '\n';
+			}
+			else if (temp == "Enemy") {
+				fin >> enemyData.shapeRadius >> enemyData.collisionRadius >> enemyData.speed >> enemyData.r >> enemyData.g >> enemyData.b
+					>> enemyData.oR >> enemyData.oG >> enemyData.oB >> enemyData.outlineThickness >> enemyData.minVert >> enemyData.maxVert >> enemyData.smallLifespan >> enemyData.spawnInterval;
+				std::cout << "Enemy Data: " << enemyData.shapeRadius << enemyData.collisionRadius << enemyData.speed << enemyData.r << enemyData.g << enemyData.b
+					<< enemyData.oR << enemyData.oG << enemyData.oB << enemyData.outlineThickness << enemyData.minVert << enemyData.maxVert << enemyData.smallLifespan << enemyData.spawnInterval << '\n';
+			}
+			else if (temp == "Bullet") {
+				fin >> bulletData.shapeRadius >> bulletData.collisionRadius >> bulletData.speed >> bulletData.r >> bulletData.g >> bulletData.b
+					>> bulletData.oR >> bulletData.oG >> bulletData.oB >> bulletData.outlineThickness >> bulletData.shapeVertices >> bulletData.lifespan;
+				std::cout << "Bullet Data: " << bulletData.shapeRadius << bulletData.collisionRadius << bulletData.speed << bulletData.r << bulletData.g << bulletData.b
+					<< bulletData.oR << bulletData.oG << bulletData.oB << bulletData.outlineThickness << bulletData.shapeVertices << bulletData.lifespan << '\n';
 			}
 		}
 		return true;
