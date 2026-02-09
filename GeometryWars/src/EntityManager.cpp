@@ -19,7 +19,7 @@ void EntityManager::update(){
 	if (lifespanCalc) {
 		for (auto& e : m_EntityVec) {
 			e->get<CLifespan>().updateLifespan();
-			if (e->get<CLifespan>().lifespanLeft <= 0) {
+			if (e->get<CLifespan>().lifespanLeft <= 0 && e->get<CLifespan>().exists) {
 				deletEntity(e);
 			}
 		}
@@ -50,8 +50,22 @@ void EntityManager::update(){
 		);
 	}
 	m_toRemove.clear();
+
+	if (spawning) {
+		if (m_timeSinceSpawn == spawntime) {
+			spawnEnemy();
+			m_timeSinceSpawn = 0;
+		}
+		else if (m_timeSinceSpawn > 250) {
+			m_timeSinceSpawn = 0;
+		}
+		else {
+			m_timeSinceSpawn++;
+		}
+	}
 }
 
+//Entity Management
 std::shared_ptr<Entity> EntityManager::addEntity(std::shared_ptr<Entity>& ptr){
 	//store it in a vector
 	m_EntityVec.push_back(ptr);
@@ -82,13 +96,8 @@ EntityVec& EntityManager::getEntities(std::string tag){
 
 
 
-
-
-
-
-
+//Entity Spawning
 void EntityManager::spawnEnemy(){
-	
 	std::shared_ptr<Entity> tempEntity = addToWaitList("enemy");
 	tempEntity->add<CTransform>(Vec2<float>(200.0f, 200.0f), Vec2<float>(5.0f, 5.0f));
 	tempEntity->add<CCollision>(25.0f);
@@ -115,12 +124,12 @@ void EntityManager::spawnBullet(sf::Vector2i targetPos){
 	tempEntity->add<CLifespan>(120);
 }
 
-std::shared_ptr<Entity> EntityManager::spawnPlayer(float size, float colRad, float speed, int r, int g, int b,
-	int outR, int outB, int outG, float outThick, int verts) {
+std::shared_ptr<Entity> EntityManager::spawnPlayer(float posX, float posY, float size, float colRad, float speed, int r, int g, int b,
+	int outR, int outG, int outB, float outThick, int verts) {
 	std::shared_ptr<Entity> tempEntity = addToWaitList("player");
-	tempEntity->add<CShape>(50.0f, 10, sf::Color::Red);
-	tempEntity->add<CCollision>(25.0f);
-	tempEntity->add<CTransform>(Vec2<float>(300.0f, 400.0f), Vec2<float>(10.0f, 10.0f));
+	tempEntity->add<CShape>(size, verts, sf::Color(r,g,b));
+	tempEntity->add<CCollision>(colRad);
+	tempEntity->add<CTransform>(Vec2<float>(posX, posY), Vec2<float>(speed, speed));
 	tempEntity->add<CInput>();
 	m_player = tempEntity;
 	return tempEntity;
@@ -139,3 +148,30 @@ void EntityManager::switchLifespanCalc(){
 		lifespanCalc = true;
 	}
 }
+
+int EntityManager::getDtEpoch(){
+	return std::chrono::steady_clock::now().time_since_epoch().count();
+}
+
+void EntityManager::initRandomEngine(){
+	m_randomEngine.seed(getDtEpoch());
+}
+
+void EntityManager::randomizeInt(int min, int max){
+	m_randomInt = std::uniform_int_distribution<int>(min, max);
+}
+
+void EntityManager::randomizeFloat(float min, float max){
+	m_randomFloat = std::uniform_real_distribution<float>(min, max);
+}
+
+int EntityManager::randomI(){
+	return m_randomInt(m_randomEngine);
+}
+
+float EntityManager::randomF(){
+	return m_randomFloat(m_randomEngine);
+}
+
+
+//Random Calc

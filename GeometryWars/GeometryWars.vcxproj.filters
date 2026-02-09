@@ -78,9 +78,6 @@
     <ClCompile Include="src\SInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\SSpawner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\external\SFML\bin\sfml-audio-3.dll" />
@@ -139,9 +136,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\SInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SSpawner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\FileInput.hpp">

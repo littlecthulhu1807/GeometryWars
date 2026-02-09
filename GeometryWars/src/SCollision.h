@@ -13,4 +13,6 @@ public:
 	void checkCollision(unsigned int& score);
 	unsigned int addScore(std::shared_ptr<Entity> entity);
 
+	bool collisionCalc = true;
+
 };

@@ -4,7 +4,6 @@
 #include"SRender.h"
 #include"SPhysics.h"
 #include"SInput.h"
-#include"SSpawner.h"
 #include"SCollision.h"
 #include"Vec2.hpp"
 #include"FileInput.hpp"
@@ -29,7 +28,6 @@ class Game {
 	SRender m_sRender;
 	SPhysics m_sPhysics;
 	SInput m_sInput;
-	SSpawner m_sSpawner = SSpawner(m_entityManager);
 	SCollision m_sCollision = SCollision(m_entityManager);
 
 	sf::Font m_mainFont;

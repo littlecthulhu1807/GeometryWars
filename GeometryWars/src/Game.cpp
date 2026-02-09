@@ -24,7 +24,10 @@ void Game::gameInit(){
     m_sPhysics = SPhysics();
 
     imGuiInit();
-    m_player = m_entityManager.spawnPlayer();
+    m_player = m_entityManager.spawnPlayer(
+        m_width/2, m_height/2, m_configReader.playerData.shapeRadius, m_configReader.playerData.collisionRadius, m_configReader.playerData.speed, m_configReader.playerData.r, m_configReader.playerData.g,
+        m_configReader.playerData.b, m_configReader.playerData.oR, m_configReader.playerData.oG, m_configReader.playerData.oB, m_configReader.playerData.outlineThickness, m_configReader.playerData.shapeVertices
+    );
 
     if (!m_mainFont.openFromFile(m_configReader.fontData.filePath))
     {
@@ -74,8 +77,9 @@ void Game::imGuiUpdate(){
             ImGui::Text("Some Text");
             ImGui::Checkbox("Movement", &m_sPhysics.physicsCalc);
             ImGui::Checkbox("Lifespan", &m_entityManager.lifespanCalc);
-            //ImGui::Checkbox("Collision", &m_sPhysics.m_physicsCalc);
-            //ImGui::Checkbox("Spawning", &m_sPhysics.m_physicsCalc);
+            ImGui::Checkbox("Collision", &m_sCollision.collisionCalc);
+            ImGui::Checkbox("Spawning", &m_entityManager.spawning);
+            ImGui::SliderInt("SpawnRate", &m_entityManager.spawntime, 10, 240);
             ImGui::EndTabItem();
         }
         if (ImGui::BeginTabItem("Entity")) {
